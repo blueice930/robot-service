@@ -73,7 +73,8 @@ export const RateProvider = ({ children }: any) => {
         result += calculateTime(startTime, newEndDate, roboRate);
         startTime.setTime(startTime.getTime() + (9*60*60*1000));
     }
-    result += calculateTime(startTime, endTime, roboRate);
+    if (startTime < endTime)
+      result += calculateTime(startTime, endTime, roboRate);
     return result;
   }, [shiftStart, shiftEnd, roboRate]);
 
