@@ -1,31 +1,29 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from './Title';
+import { useRate } from './RateContext';
 
 const useStyles = makeStyles({
   depositContext: {
-    flex: 1,
   },
 });
 
-export default function Deposits() {
+export default function RobotSalary() {
   const classes = useStyles();
+  const { getValue, shiftStart, shiftEnd } = useRate();
   return (
-    <React.Fragment>
-      <Title>Recent Deposits</Title>
+    <>
+      <Title>Robot Salary:</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        {getValue()}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+        From {new Date(shiftStart).toDateString()}
       </Typography>
-      <div>
-        <Link color="primary" href="#" onClick={() => console.log('view balance')}>
-          View balance
-        </Link>
-      </div>
-    </React.Fragment>
+      <Typography color="textSecondary" className={classes.depositContext}>
+        to {new Date(shiftEnd).toDateString()}
+      </Typography>
+    </>
   );
 }

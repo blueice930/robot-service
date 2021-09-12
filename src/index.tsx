@@ -4,8 +4,11 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 
 import App from './App'
+import { RateProvider } from "./RateContext";
 
 ReactDOM.render(
-  <App />,
+  <RateProvider>
+    <App />
+  </RateProvider>,
   document.querySelector("#root")
 );
